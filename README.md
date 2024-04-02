@@ -56,9 +56,8 @@ Memory Deallocation
 #include <cuda_runtime.h>
 #include <stdio.h>
 #include <sys/time.h>
-
 // Kernel function declaration
-__global__ void reduceUnrolling16(int *g_idata, int *g_odata, unsigned int n);
+_global_ void reduceUnrolling16(int *g_idata, int *g_odata, unsigned int n);
 // Function to calculate elapsed time in milliseconds
 double getElapsedTime(struct timeval start, struct timeval end)
 {
@@ -144,7 +143,7 @@ int main()
     return 0;
 }
 
-__global__ void reduceUnrolling16(int *g_idata, int *g_odata, unsigned int n)
+_global_ void reduceUnrolling16(int *g_idata, int *g_odata, unsigned int n)
 {
     // Set thread ID
     unsigned int tid = threadIdx.x;
@@ -201,4 +200,4 @@ __global__ void reduceUnrolling16(int *g_idata, int *g_odata, unsigned int n)
 <img width="487" alt="Screenshot 2024-03-27 114829" src="https://github.com/21005291/PCA-EXP-3-PARALLEL-REDUCTION-USING-UNROLLING-TECHNIQUES-AY-23-24/assets/112933167/276ea2bb-42e2-4922-a4d2-7d916bbdcc80">
 
 ## RESULT:
-Thus the program has been executed by unrolling by 8 and unrolling by 16. It is observed that _________ has executed with less elapsed time than _____________ with blocks_____,______.
+Thus the program has been executed by unrolling by 8 and unrolling by 16. It is observed that 1048576 has executed with less elapsed time than 1048576 with blocks 2.83 ms,122.17 ms
